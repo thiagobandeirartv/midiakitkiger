@@ -49,4 +49,49 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Animação do Contador de Orçamento
+    const budgetCounter = document.getElementById('budget-counter');
+    if (budgetCounter) {
+        const targetValue = parseInt(budgetCounter.getAttribute('data-target'));
+        const duration = 2500; // 2.5 segundos
+        
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    let startTimestamp = null;
+                    const step = (timestamp) => {
+                        if (!startTimestamp) startTimestamp = timestamp;
+                        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                        
+                        // Efeito ease-out para desacelerar no final
+                        const easeProgress = 1 - Math.pow(1 - progress, 4);
+                        const currentValue = Math.floor(easeProgress * targetValue);
+                        
+                        // Formata para moeda brasileira
+                        budgetCounter.innerText = 'R$ ' + currentValue.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                        
+                        if (progress < 1) {
+                            window.requestAnimationFrame(step);
+                        }
+                    };
+                    window.requestAnimationFrame(step);
+
+                    // Animação da Barra de Progresso
+                    const progressFill = budgetCounter.closest('.budget-highlight').querySelector('.progress-fill');
+                    if (progressFill) {
+                        const targetWidth = progressFill.getAttribute('data-width');
+                        // Pequeno atraso para garantir que a transição CSS seja aplicada
+                        setTimeout(() => {
+                            progressFill.style.width = targetWidth;
+                        }, 100);
+                    }
+
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        counterObserver.observe(budgetCounter);
+    }
 });

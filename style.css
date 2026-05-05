@@ -653,6 +653,34 @@ p {
     .nav-links a:not(.btn-primary) {
         display: none; /* simple mobile nav for now */
     }
+    
+    /* Ajuste no botão da navbar para celular */
+    .nav-links a.btn-primary {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+    
+    .navbar .logo {
+        font-size: 1.2rem;
+    }
+    
+    /* Ajuste da altura do Marquee (Equipe) */
+    .team-marquee-section {
+        padding: 0.6rem 0;
+    }
+    .marquee-content span {
+        font-size: 0.95rem;
+    }
+    
+    /* Ajuste dos textos e layout na seção de Patrocínio e Orçamento */
+    .budget-value {
+        font-size: 2.2rem;
+    }
+    .quotas-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
     .about-grid, .artist-grid {
         grid-template-columns: 1fr;
     }
