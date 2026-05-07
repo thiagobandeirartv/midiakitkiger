@@ -97,14 +97,16 @@ p {
 }
 
 .btn-outline {
-    background: transparent;
-    color: var(--text-main);
-    border: 1px solid var(--glass-border);
+    background: linear-gradient(135deg, #fff 20%, var(--primary) 100%);
+    color: #120E18; /* Cor escura para contrastar bem com o fundo dourado claro */
+    border: none;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+    font-weight: 800;
 }
 
 .btn-outline:hover {
-    border-color: var(--primary);
-    color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
 }
 
 /* Navbar */
@@ -573,13 +575,28 @@ p {
 }
 
 .quota-card h3 {
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     margin-bottom: 0.5rem;
 }
 
-.quota-card.gold h3 { color: #ffd700; }
-.quota-card.silver h3 { color: #c0c0c0; }
-.quota-card.bronze h3 { color: #cd7f32; }
+.quota-card.diamond h3 { 
+    color: #b9f2ff; 
+    text-shadow: 0 0 10px rgba(185, 242, 255, 0.4), 0 0 20px rgba(185, 242, 255, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+} /* Azul gelo/diamante brilhante */
+.quota-card.sapphire h3 { 
+    color: #4d8cff; 
+    text-shadow: 0 0 10px rgba(77, 140, 255, 0.4), 0 0 20px rgba(77, 140, 255, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+} /* Azul safira vivo */
+.quota-card.platinum h3 { 
+    color: #e5e4e2; 
+    text-shadow: 0 0 10px rgba(229, 228, 226, 0.4), 0 0 20px rgba(229, 228, 226, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+} /* Cinza platinado metálico */
 
 .quota-card h4 {
     font-size: 1rem;
